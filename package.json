@@ -2,7 +2,7 @@
   "name": "mabeopsonyeo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mabeopsonyeo.github.io/front/",
+  "homepage": "https://mabeopsonyeo.github.io/test/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

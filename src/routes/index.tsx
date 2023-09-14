@@ -20,7 +20,7 @@ export const Router = () => {
     { path: '/results', component: Results, layout: DefaultLayout },
   ];
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         {routes.map((route) => (
           <Route
