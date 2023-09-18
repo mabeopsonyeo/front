@@ -10,7 +10,7 @@ export const Main = () => {
   return (
     <StyledDiv>
       <MainContents>
-        <img src={logo} width="313px" />
+        <img src={logo} width="313px" alt="" />
         <Button type="aiYellow" onClick={() => navigate('/questions')}>
           시작하기
         </Button>
