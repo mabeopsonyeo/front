@@ -46,5 +46,7 @@ const LayoutWrapper = styled.div`
   width: 100%;
   @media screen and (min-width: 500px) {
     width: 375px;
+    display: flex;
+    align-items: center;
   }
 `;
