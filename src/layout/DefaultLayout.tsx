@@ -38,6 +38,7 @@ const LayoutContainer = styled.div<{ backgroundImageURL: string }>`
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   background-image: url(${({ backgroundImageURL }) => backgroundImageURL});
 `;
 
