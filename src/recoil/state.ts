@@ -1,6 +1,7 @@
+import { MBTI } from '@/interface/MBTI';
 import { atom } from 'recoil';
 
-export const answerState = atom<Number[]>({
+export const answerState = atom<Array<MBTI>>({
   key: 'answers',
   default: [],
 });
@@ -10,7 +11,7 @@ export const stepState = atom<number>({
   default: 0,
 });
 
-export const resultState = atom<String>({
+export const resultState = atom<string>({
   key: 'result',
   default: '',
 });
