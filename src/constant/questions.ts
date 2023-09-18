@@ -1,4 +1,6 @@
-export const test = [
+import { QnAType } from '@/interface/QnA';
+
+export const QnA: QnAType[] = [
   // E/I
   {
     question:
