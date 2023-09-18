@@ -17,7 +17,7 @@ export const Router = () => {
       layout: DefaultLayout,
     },
     { path: '/questions', component: Questions, layout: DefaultLayout },
-    { path: '/results', component: Results, layout: DefaultLayout },
+    { path: '/results/:id', component: Results, layout: DefaultLayout },
   ];
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
