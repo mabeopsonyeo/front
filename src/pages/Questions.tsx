@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
+import { styled } from 'styled-components';
 import { stepState, answerState, resultState } from '@/recoil/state';
 import { QnA } from '@/constant/questions';
 import { MBTI } from '@/interface/MBTI';
-import { styled } from 'styled-components';
 import { Button } from '@/components/Button';
 
 type ButtonColor = 'hoshinoPurple' | 'aiYellow' | 'rubyPink' | 'aquaBlue';
