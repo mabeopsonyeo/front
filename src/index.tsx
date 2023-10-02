@@ -25,7 +25,7 @@ function DebugObserver() {
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <DebugObserver />
+      {process.env.NODE_ENV === 'development' && <DebugObserver />}
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>

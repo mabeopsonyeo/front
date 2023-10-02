@@ -30,7 +30,7 @@ export const Button = (props: ButtonProps) => {
 
 const ButtonWrapper = styled.button<{ backgroundColor: string; hoverColor: string }>`
   width: 100%;
-  height: 74px;
+  min-height: 74px;
   border-radius: 16px;
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: #fff;
@@ -39,6 +39,8 @@ const ButtonWrapper = styled.button<{ backgroundColor: string; hoverColor: strin
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  white-space: break-spaces;
+  padding: 8px;
 
   &:hover {
     background-color: ${({ hoverColor }) => hoverColor};
