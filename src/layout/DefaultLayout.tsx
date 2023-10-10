@@ -50,8 +50,9 @@ const LayoutContainer = styled.div<{ backgroundImageURL: string }>`
 
 const LayoutWrapper = styled.div`
   width: 100%;
+  padding: 24px;
   @media screen and (min-width: 500px) {
-    width: 375px;
+    width: 423px;
     display: flex;
     align-items: center;
   }

@@ -34,13 +34,14 @@ const ButtonWrapper = styled.button<{ backgroundColor: string; hoverColor: strin
   border-radius: 16px;
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: #fff;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
-  font-size: 16px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  font-size: 14px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   line-height: normal;
   white-space: break-spaces;
-  padding: 8px;
+  padding: 16px;
+  word-break: keep-all;
 
   &:hover {
     background-color: ${({ hoverColor }) => hoverColor};

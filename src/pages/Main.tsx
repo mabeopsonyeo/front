@@ -10,7 +10,7 @@ export const Main = () => {
   return (
     <StyledDiv>
       <MainContents>
-        <img src={logo} width="313px" alt="" />
+        <img src={logo} width="80%" alt="" />
         <Button type="aiYellow" onClick={() => navigate('/questions')}>
           시작하기
         </Button>
@@ -36,4 +36,9 @@ const MainContents = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 80px;
+
+  button {
+    font-weight: 700;
+    font-size: 18px;
+  }
 `;

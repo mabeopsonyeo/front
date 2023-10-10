@@ -40,27 +40,29 @@ export const Questions = () => {
   return (
     <BlurBackground>
       <Content>{QnA[step].question}</Content>
-      {QnA[step].options.map((option, idx) => (
-        <Button
-          key={`answer-${idx}`}
-          type={step % 2 === 0 ? evalButtons[idx] : oddButtons[idx]}
-          onClick={() => {
-            const updateAnswers: MBTI[] =
-              answers.length < step + 1
-                ? ([...answers, option.type] as MBTI[])
-                : ([...answers.slice(0, step), option.type] as MBTI[]);
-            setAnswers(updateAnswers);
+      <ButtonWrapper>
+        {QnA[step].options.map((option, idx) => (
+          <Button
+            key={`answer-${idx}`}
+            type={step % 2 === 0 ? evalButtons[idx] : oddButtons[idx]}
+            onClick={() => {
+              const updateAnswers: MBTI[] =
+                answers.length < step + 1
+                  ? ([...answers, option.type] as MBTI[])
+                  : ([...answers.slice(0, step), option.type] as MBTI[]);
+              setAnswers(updateAnswers);
 
-            if (updateAnswers.length === QnA.length) {
-              const mbti = getUserMbti(updateAnswers);
-              return (window.location.href = `${process.env.PUBLIC_URL}/results/${mbti}`);
-            }
-            return setStep(step + 1);
-          }}
-        >
-          {option.answer}
-        </Button>
-      ))}
+              if (updateAnswers.length === QnA.length) {
+                const mbti = getUserMbti(updateAnswers);
+                return (window.location.href = `${process.env.PUBLIC_URL}/results/${mbti}`);
+              }
+              return setStep(step + 1);
+            }}
+          >
+            {option.answer}
+          </Button>
+        ))}
+      </ButtonWrapper>
       <BottomSection>
         <ProgressBar>
           <div>🔮</div>
@@ -75,7 +77,6 @@ export const Questions = () => {
 const BlurBackground = styled.div`
   @media screen and (min-width: 1024px) {
     width: 375px;
-    height: 934px;
   }
   position: relative;
   width: 100%;
@@ -92,7 +93,6 @@ const BlurBackground = styled.div`
   &::after {
     @media screen and (min-width: 1024px) {
       width: 375px;
-      height: 934px;
     }
     content: '';
     width: 100%;
@@ -108,20 +108,33 @@ const BlurBackground = styled.div`
 `;
 
 const Content = styled.div`
-  color: #000;
+  color: #282827;
   text-align: center;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
-  padding-bottom: 16px;
+  line-height: 30px;
+  height: 220px;
+  display: flex;
+  align-items: center;
   cursor: default;
   white-space: break-spaces;
+  word-break: keep-all;
 `;
 
+const ButtonWrapper = styled.div`
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  margin-bottom: 46px;
+`;
 const BottomSection = styled.div`
   position: absolute;
+  width: 100%;
   bottom: 24px;
   color: #fff;
   text-align: center;
@@ -135,20 +148,21 @@ const ProgressBar = styled.div`
   display: flex;
   gap: 4px;
   align-items: center;
-  padding: 0px 8px;
+  padding: 0px 32px;
   height: 32px;
   justify-items: center;
   font-size: 16px;
 
   progress {
+    width: 100%;
     appearance: none;
     &::-webkit-progress-bar {
       background: rgba(249, 240, 255, 0.7);
       border-radius: 50px;
+      overflow: hidden;
     }
     &::-webkit-progress-value {
       background: rgba(131, 85, 224, 0.7);
-      border-radius: 50px;
     }
   }
 `;
