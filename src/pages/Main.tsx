@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '@/assets/images/logo.png';
 import { Button } from '@/components/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +9,7 @@ export const Main = () => {
   return (
     <StyledDiv>
       <MainContents>
-        <img src={logo} width="80%" alt="" />
+        <img src={`${process.env.PUBLIC_URL}/images/logo.png`} width="80%" alt="" />
         <Button type="aiYellow" onClick={() => navigate('/questions')}>
           시작하기
         </Button>
