@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, { ReactNode, useEffect, useMemo } from 'react';
 import { useMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
@@ -14,19 +14,29 @@ export const DefaultLayout = (props: { children: ReactNode | undefined }) => {
   const backgroundImageURL = useMemo(() => {
     let imageURL = '' as string;
     if (matchMain) {
-      imageURL = `${process.env.PUBLIC_URL}/images/background/mainBackgroundImage.jpg`;
+      imageURL = `${process.env.PUBLIC_URL}/images/background/mainBackgroundImage.webp`;
     }
     if (matchQuestions) {
       imageURL =
         (step + 1) % 2 === 0
-          ? `${process.env.PUBLIC_URL}/images/background/evenQuestionsBackgroundImage.jpg`
-          : `${process.env.PUBLIC_URL}/images/background/oddQuestionsBackgroundImage.jpg`;
+          ? `${process.env.PUBLIC_URL}/images/background/evenQuestionsBackgroundImage.webp`
+          : `${process.env.PUBLIC_URL}/images/background/oddQuestionsBackgroundImage.webp`;
     }
     if (matchResults) {
-      imageURL = `${process.env.PUBLIC_URL}/images/background/resultBackgroundImage.jpg`;
+      imageURL = `${process.env.PUBLIC_URL}/images/background/resultBackgroundImage.webp`;
     }
     return imageURL;
   }, [matchMain, matchQuestions, matchResults, step]);
+
+  function setScreenSize() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`); //"--vh"라는 속성으로 정의해준다.
+  }
+
+  useEffect(() => {
+    setScreenSize();
+    window.addEventListener('resize', () => setScreenSize());
+  }, []);
 
   return (
     <LayoutContainer backgroundImageURL={backgroundImageURL}>
@@ -38,7 +48,7 @@ export const DefaultLayout = (props: { children: ReactNode | undefined }) => {
 const LayoutContainer = styled.div<{ backgroundImageURL: string }>`
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;

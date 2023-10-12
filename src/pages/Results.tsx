@@ -20,18 +20,18 @@ export const Results = () => {
         <Helmet>
           <meta property="og:url" content={window.location.href} />
           <meta property="og:title" content={ResultTitle[id]} />
-          <meta property="og:image" content={`${process.env.PUBLIC_URL}/images/result/${id}.png`} />
+          <meta property="og:image" content={`${process.env.PUBLIC_URL}/images/result/${id}.webp`} />
           <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" />
           <meta property="og:type" content="website" />
         </Helmet>
       )}
-      <img width="100%" src={`${process.env.PUBLIC_URL}/images/result/${id}.png`} alt={id} />
-      <ShareButtonWrapper>
-        {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
-        <Button type="aiYellow" onClick={() => handleCopyClipBoard()}>
-          결과 공유하기
-        </Button>
-      </ShareButtonWrapper>
+      <ResultContentWrapper>
+        <img className="result_image" src={`${process.env.PUBLIC_URL}/images/result/${id}.webp`} alt={id} />
+        <ShareButtonWrapper>
+          {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
+          <ShareButton onClick={() => handleCopyClipBoard()}>결과 공유하기</ShareButton>
+        </ShareButtonWrapper>
+      </ResultContentWrapper>
       <BottomSection>
         <div className="copyright">Designed by Freepik</div>
       </BottomSection>
@@ -42,12 +42,34 @@ export const Results = () => {
 const ResultWrapper = styled.div`
   font-size: 0;
   display: flex;
-  gap: 60px;
+  height: calc((calc(var(--vh, 1vh) * 100)) - 80px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
+const ShareButton = styled.div`
+  color: ${({ theme }) => theme.color.aquaBlue.scale500};
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+`;
+
+const ResultContentWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
+  .result_image {
+    width: 100%;
+  }
+`;
 const ShareButtonWrapper = styled.div`
   width: 100%;
   position: relative;
