@@ -1,4 +1,3 @@
-import { Button } from '@/components/Button';
 import { FloatingPopup } from '@/components/FloatingPopup';
 import { ResultTitle } from '@/constant/results';
 import React, { useState } from 'react';
