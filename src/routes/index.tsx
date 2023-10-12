@@ -26,12 +26,13 @@ export const Router = () => {
       <HelmetProvider>
         <Helmet>
           <title>눈을 떠보니 마법소녀가 되어있던 건에 대하여</title>
-          <meta name="description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" />
-          <meta property="og:url" content={process.env.PUBLIC_URL} />
-          <meta property="og:title" content="눈을 떠보니 마법소녀가 되어있던 건에 대하여" />
-          <meta property="og:image" content={`${process.env.PUBLIC_URL}/images/logo.png`} />
-          <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" />
-          <meta property="og:type" content="website" />
+          <meta name="title" content="눈을 떠보니 마법소녀가 되어있던 건에 대하여" data-react-helmet="true" />
+          <meta name="description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" data-react-helmet="true" />
+          <meta property="og:url" content={process.env.PUBLIC_URL} data-react-helmet="true" />
+          <meta property="og:title" content="눈을 떠보니 마법소녀가 되어있던 건에 대하여" data-react-helmet="true" />
+          <meta property="og:image" content={`${process.env.PUBLIC_URL}/images/logo.png`} data-react-helmet="true" />
+          <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" data-react-helmet="true" />
+          <meta property="og:type" content="website" data-react-helmet="true" />
         </Helmet>
         <Routes>
           {routes.map((route) => (
