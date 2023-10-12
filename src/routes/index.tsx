@@ -4,7 +4,8 @@ import { Questions } from '../pages/Questions';
 import { Main } from '../pages/Main';
 import { Results } from '../pages/Results';
 import { DefaultLayout } from '../layout/DefaultLayout';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 
 export const Router = () => {
   const routes: Array<{
@@ -26,9 +27,9 @@ export const Router = () => {
         <Helmet>
           <title>눈을 떠보니 마법소녀가 되어있던 건에 대하여</title>
           <meta name="description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" />
-          <meta property="og:url" content="https://mabeopsonyeo.github.io/test/" />
+          <meta property="og:url" content={process.env.PUBLIC_URL} />
           <meta property="og:title" content="눈을 떠보니 마법소녀가 되어있던 건에 대하여" />
-          <meta property="og:image" content="%PUBLIC_URL%/images/logo.png" />
+          <meta property="og:image" content={`${process.env.PUBLIC_URL}/images/logo.png`} />
           <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" />
           <meta property="og:type" content="website" />
         </Helmet>
