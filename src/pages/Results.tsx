@@ -14,7 +14,7 @@ export const Results = () => {
   };
   return (
     <ResultWrapper>
-      <img width="100%" src={`../images/result/${id}.png`} />
+      <img width="100%" src={`${process.env.PUBLIC_URL}/images/result/${id}.png`} alt={id} />
       <ShareButtonWrapper>
         {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
         <Button type="aiYellow" onClick={() => handleCopyClipBoard()}>
