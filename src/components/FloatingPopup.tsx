@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import styled, { useTheme } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 
 interface FloatingPopupProps {
   text: string;
