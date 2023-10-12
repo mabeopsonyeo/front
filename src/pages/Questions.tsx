@@ -141,6 +141,7 @@ const BottomSection = styled.div`
 
   .copyright {
     font-size: 10px;
+    opacity: 50%;
   }
 `;
 
