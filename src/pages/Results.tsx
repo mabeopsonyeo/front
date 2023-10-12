@@ -18,11 +18,17 @@ export const Results = () => {
     <ResultWrapper>
       {id && (
         <Helmet>
-          <meta property="og:url" content={window.location.href} />
-          <meta property="og:title" content={ResultTitle[id]} />
-          <meta property="og:image" content={`${process.env.PUBLIC_URL}/images/result/${id}.webp`} />
-          <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" />
-          <meta property="og:type" content="website" />
+          <title>눈을 떠보니 마법소녀가 되어있던 건에 대하여</title>
+          <meta name="title" content="눈을 떠보니 마법소녀가 되어있던 건에 대하여" data-react-helmet="true" />
+          <meta property="og:url" content={window.location.href} data-react-helmet="true" />
+          <meta property="og:title" content={ResultTitle[id]} data-react-helmet="true" />
+          <meta
+            property="og:image"
+            content={`${process.env.PUBLIC_URL}/images/result/${id}.webp`}
+            data-react-helmet="true"
+          />
+          <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" data-react-helmet="true" />
+          <meta property="og:type" content="website" data-react-helmet="true" />
         </Helmet>
       )}
       <ResultContentWrapper>
