@@ -1,6 +1,8 @@
 import { Button } from '@/components/Button';
 import { FloatingPopup } from '@/components/FloatingPopup';
+import { ResultTitle } from '@/constant/results';
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
@@ -14,6 +16,15 @@ export const Results = () => {
   };
   return (
     <ResultWrapper>
+      {id && (
+        <Helmet>
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:title" content={ResultTitle[id]} />
+          <meta property="og:image" content={`${process.env.PUBLIC_URL}/images/result/${id}.png`} />
+          <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" />
+          <meta property="og:type" content="website" />
+        </Helmet>
+      )}
       <img width="100%" src={`${process.env.PUBLIC_URL}/images/result/${id}.png`} alt={id} />
       <ShareButtonWrapper>
         {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
