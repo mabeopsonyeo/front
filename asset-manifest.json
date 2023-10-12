@@ -1,17 +1,13 @@
 {
   "files": {
     "main.css": "/test/static/css/main.f48edd91.css",
-    "main.js": "/test/static/js/main.8969b7ba.js",
-    "static/media/evenQuestionsBackgroundImage.jpg": "/test/static/media/evenQuestionsBackgroundImage.5b06fcc03eaf5f7ffba0.jpg",
-    "static/media/mainBackgroundImage.jpg": "/test/static/media/mainBackgroundImage.235f91683f70cd415d4e.jpg",
-    "static/media/oddQuestionsBackgroundImage.jpg": "/test/static/media/oddQuestionsBackgroundImage.9652cb223aa5733c8648.jpg",
-    "static/media/logo.png": "/test/static/media/logo.2d583e022bb64dc7341c.png",
+    "main.js": "/test/static/js/main.223080a5.js",
     "index.html": "/test/index.html",
     "main.f48edd91.css.map": "/test/static/css/main.f48edd91.css.map",
-    "main.8969b7ba.js.map": "/test/static/js/main.8969b7ba.js.map"
+    "main.223080a5.js.map": "/test/static/js/main.223080a5.js.map"
   },
   "entrypoints": [
     "static/css/main.f48edd91.css",
-    "static/js/main.8969b7ba.js"
+    "static/js/main.223080a5.js"
   ]
 }
