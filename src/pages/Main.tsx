@@ -13,6 +13,9 @@ export const Main = () => {
         <Button type="aiYellow" onClick={() => navigate('/questions')}>
           시작하기
         </Button>
+        <BottomSection>
+          <div className="copyright">Designed by Freepik</div>
+        </BottomSection>
       </MainContents>
     </StyledDiv>
   );
@@ -39,5 +42,17 @@ const MainContents = styled.div`
   button {
     font-weight: 700;
     font-size: 18px;
+  }
+`;
+const BottomSection = styled.div`
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: #fff;
+  text-align: center;
+
+  .copyright {
+    font-size: 10px;
+    opacity: 50%;
   }
 `;

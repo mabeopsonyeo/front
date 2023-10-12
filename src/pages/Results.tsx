@@ -21,6 +21,9 @@ export const Results = () => {
           결과 공유하기
         </Button>
       </ShareButtonWrapper>
+      <BottomSection>
+        <div className="copyright">Designed by Freepik</div>
+      </BottomSection>
     </ResultWrapper>
   );
 };
@@ -40,5 +43,17 @@ const ShareButtonWrapper = styled.div`
 
   button {
     min-height: 60px !important;
+  }
+`;
+const BottomSection = styled.div`
+  position: absolute;
+  width: 100%;
+  bottom: 24px;
+  color: #fff;
+  text-align: center;
+
+  .copyright {
+    font-size: 10px;
+    opacity: 50%;
   }
 `;
