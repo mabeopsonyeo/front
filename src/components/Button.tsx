@@ -1,9 +1,11 @@
 import theme from '@/styles/theme';
 import React, { ReactNode, useMemo } from 'react';
 import { styled } from 'styled-components';
+import { debounce } from 'lodash';
+import { ButtonColor } from '@/interface/Color';
 
 interface ButtonProps {
-  type?: 'hoshinoPurple' | 'aiYellow' | 'rubyPink' | 'aquaBlue';
+  type?: ButtonColor;
   children: ReactNode | undefined;
   onClick?: any;
 }
@@ -22,7 +24,11 @@ export const Button = (props: ButtonProps) => {
   }, [type]);
 
   return (
-    <ButtonWrapper backgroundColor={backgroundColor} hoverColor={hoverColor} onClick={onClick}>
+    <ButtonWrapper
+      backgroundColor={backgroundColor}
+      hoverColor={hoverColor}
+      onClick={debounce(onClick, 300, { maxWait: 500 })}
+    >
       {children}
     </ButtonWrapper>
   );
