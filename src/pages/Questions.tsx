@@ -1,41 +1,35 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { styled } from 'styled-components';
-import { stepState, answerState, resultState } from '@/recoil/state';
-import { QnA } from '@/constant/questions';
+import { stepState, answerState } from '@/recoil/state';
+import { resultSelector } from '@/recoil/selector';
+
 import { MBTI } from '@/interface/MBTI';
+import { ButtonColor } from '@/interface/Color';
 import { Button } from '@/components/Button';
 
-type ButtonColor = 'hoshinoPurple' | 'aiYellow' | 'rubyPink' | 'aquaBlue';
+import { QnA } from '@/constant/questions';
+import { AnswerType } from '@/interface/QnA';
 
 export const Questions = () => {
   const [answers, setAnswers] = useRecoilState(answerState);
   const [step, setStep] = useRecoilState(stepState);
-  const [result, setResult] = useRecoilState(resultState);
-
-  const getUserMbti = (userAnswers: MBTI[]) => {
-    let mbti = result;
-    const mbtiObj = {
-      E: 0,
-      I: 0,
-      N: 0,
-      S: 0,
-      T: 0,
-      F: 0,
-      J: 0,
-      P: 0,
-    };
-
-    userAnswers.map((value) => (mbtiObj[value] += 1));
-    for (let [key, value] of Object.entries(mbtiObj)) {
-      if (value > 1) mbti += key;
-    }
-    setResult(mbti);
-    return mbti;
-  };
+  const result = useRecoilValue(resultSelector);
 
   const oddButtons: Array<ButtonColor> = ['hoshinoPurple', 'rubyPink'];
   const evalButtons: Array<ButtonColor> = ['aiYellow', 'aquaBlue'];
+
+  const handleButtonClick = (option: AnswerType, step: number) => {
+    const updateAnswers: MBTI[] =
+      answers.length < step + 1
+        ? ([...answers, option.type] as MBTI[])
+        : ([...answers.slice(0, step), option.type] as MBTI[]);
+    setAnswers(updateAnswers);
+    if (updateAnswers.length === QnA.length) {
+      return (window.location.href = `${process.env.PUBLIC_URL}/results/${result}`);
+    }
+    return setStep(step + 1);
+  };
 
   return (
     <BlurBackground>
@@ -45,19 +39,7 @@ export const Questions = () => {
           <Button
             key={`answer-${idx}`}
             type={step % 2 === 0 ? evalButtons[idx] : oddButtons[idx]}
-            onClick={() => {
-              const updateAnswers: MBTI[] =
-                answers.length < step + 1
-                  ? ([...answers, option.type] as MBTI[])
-                  : ([...answers.slice(0, step), option.type] as MBTI[]);
-              setAnswers(updateAnswers);
-
-              if (updateAnswers.length === QnA.length) {
-                const mbti = getUserMbti(updateAnswers);
-                return (window.location.href = `${process.env.PUBLIC_URL}/results/${mbti}`);
-              }
-              return setStep(step + 1);
-            }}
+            onClick={() => handleButtonClick(option, step)}
           >
             {option.answer}
           </Button>
