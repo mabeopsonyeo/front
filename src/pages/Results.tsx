@@ -1,28 +1,55 @@
 import { FloatingPopup } from '@/components/FloatingPopup';
+import { answerState, stepState } from '@/recoil/state';
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useResetRecoilState } from 'recoil';
+import { Helmet } from 'react-helmet-async';
 import { styled } from 'styled-components';
+import { ResultTitle } from '@/constant/results';
 
 export const Results = () => {
   let { id } = useParams();
   const navigate = useNavigate();
+  const resetAnswerState = useResetRecoilState(answerState);
+  const resetStepState = useResetRecoilState(stepState);
   const [showFloatingPopup, setShowFloatingPopup] = useState(false);
 
   const handleCopyClipBoard = async () => {
     await navigator.clipboard.writeText(window.location.href);
     setShowFloatingPopup(true);
   };
+
+  const handleRetry = () => {
+    resetAnswerState();
+    resetStepState();
+    navigate('/');
+  };
   return (
     <ResultWrapper>
+      {id && (
+        <Helmet>
+          <title>{ResultTitle[id]}</title>
+          <meta name="title" content={ResultTitle[id]} data-rh="true"></meta>
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:title" content={ResultTitle[id]} />
+          <meta
+            property="og:image"
+            content={`https://mabeopsonyeo.github.io/test/images/result/${id}.webp`}
+            data-rh="true"
+          />
+          <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" />
+          <meta property="og:type" content="website" />
+        </Helmet>
+      )}
       <ResultContentWrapper>
-        <img className="result_image" src={`${process.env.PUBLIC_URL}/images/result/${id}.webp`} alt={id} />
+        <img className="result_image" src={`https://mabeopsonyeo.github.io/test/images/result/${id}.webp`} alt={id} />
         <ShareButtonWrapper>
           {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
           <div className="button_wrapper" onClick={() => handleCopyClipBoard()}>
             <div className="button_text">🪄 결과 공유하기</div>
             <div className="button_background"></div>
           </div>
-          <div className="button_wrapper" onClick={() => navigate('/')}>
+          <div className="button_wrapper" onClick={() => handleRetry()}>
             <div className="button_text">🧙🏻‍♀️ 다시 검사하기</div>
             <div className="button_background"></div>
           </div>
