@@ -1,12 +1,11 @@
 import { FloatingPopup } from '@/components/FloatingPopup';
-import { ResultTitle } from '@/constant/results';
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export const Results = () => {
   let { id } = useParams();
+  const navigate = useNavigate();
   const [showFloatingPopup, setShowFloatingPopup] = useState(false);
 
   const handleCopyClipBoard = async () => {
@@ -15,26 +14,18 @@ export const Results = () => {
   };
   return (
     <ResultWrapper>
-      {id && (
-        <Helmet>
-          <title>눈을 떠보니 마법소녀가 되어있던 건에 대하여</title>
-          <meta name="title" content="눈을 떠보니 마법소녀가 되어있던 건에 대하여" data-react-helmet="true" />
-          <meta property="og:url" content={window.location.href} data-react-helmet="true" />
-          <meta property="og:title" content={ResultTitle[id]} data-react-helmet="true" />
-          <meta
-            property="og:image"
-            content={`${process.env.PUBLIC_URL}/images/result/${id}.webp`}
-            data-react-helmet="true"
-          />
-          <meta property="og:description" content="내가 마법소녀였다면 어떤 마법소녀였을까?" data-react-helmet="true" />
-          <meta property="og:type" content="website" data-react-helmet="true" />
-        </Helmet>
-      )}
       <ResultContentWrapper>
         <img className="result_image" src={`${process.env.PUBLIC_URL}/images/result/${id}.webp`} alt={id} />
         <ShareButtonWrapper>
           {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
-          <ShareButton onClick={() => handleCopyClipBoard()}>결과 공유하기</ShareButton>
+          <div className="button_wrapper" onClick={() => handleCopyClipBoard()}>
+            <div className="button_text">🪄 결과 공유하기</div>
+            <div className="button_background"></div>
+          </div>
+          <div className="button_wrapper" onClick={() => navigate('/')}>
+            <div className="button_text">🧙🏻‍♀️ 다시 검사하기</div>
+            <div className="button_background"></div>
+          </div>
         </ShareButtonWrapper>
       </ResultContentWrapper>
       <BottomSection>
@@ -53,15 +44,6 @@ const ResultWrapper = styled.div`
   justify-content: center;
 `;
 
-const ShareButton = styled.div`
-  color: ${({ theme }) => theme.color.aquaBlue.scale500};
-  font-size: 14px;
-  font-weight: 700;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: underline;
-`;
-
 const ResultContentWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -69,7 +51,7 @@ const ResultContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 
   .result_image {
     width: 100%;
@@ -77,10 +59,33 @@ const ResultContentWrapper = styled.div`
 `;
 const ShareButtonWrapper = styled.div`
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 48px;
+  gap: 12px;
   position: relative;
 
-  button {
-    min-height: 60px !important;
+  .button_wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .button_background {
+      width: 100%;
+      height: 100%;
+      background: ${({ theme }) => theme.color.rubyPink.default};
+      opacity: 0.5;
+      filter: blur(1.5px);
+      border-radius: 16px;
+    }
+    .button_text {
+      z-index: 1;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+      color: #f8f7f5;
+    }
   }
 `;
 const BottomSection = styled.div`
