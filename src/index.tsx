@@ -9,8 +9,6 @@ import theme from '@/styles/theme';
 import './styles/global.css';
 import { render } from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-
 function DebugObserver() {
   const snapshot = useRecoilSnapshot();
   useEffect(() => {
