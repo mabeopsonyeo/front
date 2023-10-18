@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ReactDOM, { hydrateRoot } from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import { RecoilRoot, useRecoilSnapshot } from 'recoil';
 
