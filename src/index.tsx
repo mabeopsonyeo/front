@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ReactDOM, { hydrateRoot } from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import { RecoilRoot, useRecoilSnapshot } from 'recoil';
 
@@ -8,8 +8,6 @@ import theme from '@/styles/theme';
 
 import './styles/global.css';
 import { render } from 'react-dom';
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 function DebugObserver() {
   const snapshot = useRecoilSnapshot();
