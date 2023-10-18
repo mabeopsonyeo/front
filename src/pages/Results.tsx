@@ -1,11 +1,13 @@
 import { FloatingPopup } from '@/components/FloatingPopup';
 import { answerState, stepState } from '@/recoil/state';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useResetRecoilState } from 'recoil';
 import { Helmet } from 'react-helmet-async';
 import { styled } from 'styled-components';
 import { ResultTitle } from '@/constant/results';
+import { useLottie } from 'lottie-react';
+import lottieAnimation from '@/assets/lottie.json';
 
 export const Results = () => {
   let { id } = useParams();
@@ -13,6 +15,13 @@ export const Results = () => {
   const resetAnswerState = useResetRecoilState(answerState);
   const resetStepState = useResetRecoilState(stepState);
   const [showFloatingPopup, setShowFloatingPopup] = useState(false);
+  const [isShowLottie, setIsShowLottie] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsShowLottie(false);
+    }, 2500);
+  }, []);
 
   const handleCopyClipBoard = async () => {
     await navigator.clipboard.writeText(window.location.href);
@@ -24,6 +33,13 @@ export const Results = () => {
     resetStepState();
     navigate('/');
   };
+
+  const options = {
+    animationData: lottieAnimation,
+    loop: true,
+  };
+  const { View } = useLottie(options);
+
   return (
     <ResultWrapper>
       {id && (
@@ -41,20 +57,24 @@ export const Results = () => {
           <meta property="og:type" content="website" />
         </Helmet>
       )}
-      <ResultContentWrapper>
-        <img className="result_image" src={`https://mabeopsonyeo.github.io/test/images/result/${id}.webp`} alt={id} />
-        <ShareButtonWrapper>
-          {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
-          <div className="button_wrapper" onClick={() => handleCopyClipBoard()}>
-            <div className="button_text">🪄 결과 공유하기</div>
-            <div className="button_background"></div>
-          </div>
-          <div className="button_wrapper" onClick={() => handleRetry()}>
-            <div className="button_text">🧙🏻‍♀️ 다시 검사하기</div>
-            <div className="button_background"></div>
-          </div>
-        </ShareButtonWrapper>
-      </ResultContentWrapper>
+      {isShowLottie ? (
+        View
+      ) : (
+        <ResultContentWrapper>
+          <img className="result_image" src={`https://mabeopsonyeo.github.io/test/images/result/${id}.webp`} alt={id} />
+          <ShareButtonWrapper>
+            {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
+            <div className="button_wrapper" onClick={() => handleCopyClipBoard()}>
+              <div className="button_text">🪄 결과 공유하기</div>
+              <div className="button_background"></div>
+            </div>
+            <div className="button_wrapper" onClick={() => handleRetry()}>
+              <div className="button_text">🧙🏻‍♀️ 다시 검사하기</div>
+              <div className="button_background"></div>
+            </div>
+          </ShareButtonWrapper>
+        </ResultContentWrapper>
+      )}
       <BottomSection>
         <div className="copyright">Designed by Freepik</div>
       </BottomSection>
