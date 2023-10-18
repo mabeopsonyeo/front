@@ -26,7 +26,7 @@ const FloatingPopupWrapper = styled.div`
   -webkit-animation: 3s ease 0.3s normal 1 fadeinout;
   opacity: 0;
   position: absolute;
-  top: -47px;
+  top: -37px;
 
   .info_text {
     color: #454441;
@@ -46,19 +46,6 @@ const FloatingPopupWrapper = styled.div`
     background: rgba(255, 255, 255, 0.7);
     filter: blur(1.5px);
     border-radius: 16px;
-  }
-  .popup_background:after {
-    content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border: 8px solid transparent;
-    border-top-color: rgba(255, 255, 255, 0.7);
-    border-bottom: 0;
-    margin-left: -8px;
-    margin-bottom: -8px;
   }
 
   @keyframes fadeinout {
