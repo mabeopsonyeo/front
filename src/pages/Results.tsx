@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useLottie } from 'lottie-react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useResetRecoilState } from 'recoil';
 import { Helmet } from 'react-helmet-async';
@@ -8,7 +7,6 @@ import { styled } from 'styled-components';
 import { FloatingPopup } from '@/components/FloatingPopup';
 import { answerState, stepState } from '@/recoil/state';
 import { ResultTitle } from '@/constant/results';
-import lottieAnimation from '@/assets/lottie.json';
 
 export const Results = () => {
   let { id } = useParams();
@@ -16,18 +14,7 @@ export const Results = () => {
   const resetAnswerState = useResetRecoilState(answerState);
   const resetStepState = useResetRecoilState(stepState);
   const [showFloatingPopup, setShowFloatingPopup] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    if (!imgRef.current) return;
-    const updateStatus = (img: HTMLImageElement) => {
-      const isLoaded = img.complete && img.naturalHeight !== 0;
-      isLoaded && setTimeout(() => setIsImageLoaded(isLoaded), 2500);
-    };
-    imgRef.current.addEventListener('load', () => updateStatus(imgRef.current as HTMLImageElement), { once: true });
-  }, [imgRef]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleCopyClipBoard = async () => {
     await navigator.clipboard.writeText(window.location.href);
@@ -39,11 +26,6 @@ export const Results = () => {
     resetStepState();
     navigate('/');
   };
-
-  const { View } = useLottie({
-    animationData: lottieAnimation,
-    loop: true,
-  });
 
   return (
     <ResultWrapper>
@@ -62,25 +44,26 @@ export const Results = () => {
           <meta property="og:type" content="website" />
         </Helmet>
       )}
-      <LottieWrapper $isActive={!isImageLoaded}>{View}</LottieWrapper>
-      <ResultContentWrapper $isActive={isImageLoaded}>
+      <ResultContentWrapper>
         <img
           className="result_image"
           src={`https://mabeopsonyeo.github.io/test/images/result/${id}.webp`}
           alt={id}
-          ref={imgRef}
+          onLoad={() => setIsLoading(false)}
         />
-        <ShareButtonWrapper>
-          {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
-          <div className="button_wrapper" onClick={() => handleCopyClipBoard()}>
-            <div className="button_text">🪄 결과 공유하기</div>
-            <div className="button_background"></div>
-          </div>
-          <div className="button_wrapper" onClick={() => handleRetry()}>
-            <div className="button_text">🧙🏻‍♀️ 다시 검사하기</div>
-            <div className="button_background"></div>
-          </div>
-        </ShareButtonWrapper>
+        {!isLoading && (
+          <ShareButtonWrapper>
+            {showFloatingPopup && <FloatingPopup text="링크 복사 완료! 결과를 공유 해보세요!" />}
+            <div className="button_wrapper" onClick={() => handleCopyClipBoard()}>
+              <div className="button_text">🪄 결과 공유하기</div>
+              <div className="button_background"></div>
+            </div>
+            <div className="button_wrapper" onClick={() => handleRetry()}>
+              <div className="button_text">🧙🏻‍♀️ 다시 검사하기</div>
+              <div className="button_background"></div>
+            </div>
+          </ShareButtonWrapper>
+        )}
       </ResultContentWrapper>
 
       <BottomSection>
@@ -99,10 +82,10 @@ const ResultWrapper = styled.div`
   justify-content: center;
 `;
 
-const ResultContentWrapper = styled.div<{ $isActive: boolean }>`
+const ResultContentWrapper = styled.div`
   width: 100%;
   min-height: calc((calc(var(--vh, 1vh) * 100)) - 172px);
-  display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -155,8 +138,4 @@ const BottomSection = styled.div`
     font-size: 10px;
     opacity: 50%;
   }
-`;
-
-const LottieWrapper = styled.section<{ $isActive: boolean }>`
-  display: ${({ $isActive }) => ($isActive ? 'inherit' : 'none')};
 `;

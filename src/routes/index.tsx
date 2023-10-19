@@ -5,6 +5,7 @@ import { Main } from '../pages/Main';
 import { Results } from '../pages/Results';
 import { DefaultLayout } from '../layout/DefaultLayout';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Loading } from '@/pages/Loading';
 
 export const Router = () => {
   const routes: Array<{
@@ -19,6 +20,7 @@ export const Router = () => {
     },
     { path: '/questions', component: Questions, layout: DefaultLayout },
     { path: '/results/:id', component: Results, layout: DefaultLayout },
+    { path: '/loading', component: Loading, layout: DefaultLayout },
   ];
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
