@@ -40,6 +40,7 @@ export const DefaultLayout = (props: { children: ReactNode | undefined }) => {
 
   return (
     <LayoutContainer backgroundImageURL={backgroundImageURL}>
+      <div className="background_image" />
       <LayoutWrapper>{props.children}</LayoutWrapper>
     </LayoutContainer>
   );
@@ -48,17 +49,28 @@ export const DefaultLayout = (props: { children: ReactNode | undefined }) => {
 const LayoutContainer = styled.div<{ backgroundImageURL: string }>`
   display: flex;
   justify-content: center;
-  height: calc(var(--vh, 1vh) * 100);
-  width: 100vw;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-image: url(${({ backgroundImageURL }) => backgroundImageURL});
+  min-height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  position: relative;
+
+  .background_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(${({ backgroundImageURL }) => backgroundImageURL});
+    background-attachment: fixed;
+  }
 `;
 
 const LayoutWrapper = styled.div`
   width: 100%;
   padding: 24px;
+  z-index: 1;
   @media screen and (min-width: 500px) {
     width: 423px;
     display: flex;
