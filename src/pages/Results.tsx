@@ -65,7 +65,7 @@ export const Results = () => {
 const ResultWrapper = styled.div`
   font-size: 0;
   display: flex;
-  height: calc((calc(var(--vh, 1vh) * 100)) - 80px);
+  min-height: calc((calc(var(--vh, 1vh) * 100)) - 48px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@ const ResultWrapper = styled.div`
 
 const ResultContentWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: calc((calc(var(--vh, 1vh) * 100)) - 172px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,7 +91,7 @@ const ShareButtonWrapper = styled.div`
   grid-template-rows: 48px;
   gap: 12px;
   position: relative;
-
+  margin-bottom: 30px;
   .button_wrapper {
     position: relative;
     display: flex;
