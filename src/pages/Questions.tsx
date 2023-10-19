@@ -20,16 +20,11 @@ export const Questions = () => {
   const evalButtons: Array<ButtonColor> = ['aiYellow', 'aquaBlue'];
 
   const handleButtonClick = (option: AnswerType, step: number) => {
-    const currentStep = step + 1;
-    const updateAnswers: MBTI[] =
-      answers.length < currentStep
-        ? ([...answers, option.type] as MBTI[])
-        : ([...answers.slice(0, step), option.type] as MBTI[]);
+    if (answers.length === QnA.length) return;
+    const updateAnswers: MBTI[] = [...answers, option.type] as MBTI[];
     setAnswers(updateAnswers);
-    if (currentStep === QnA.length) {
-      return;
-    }
-    return setStep(currentStep);
+    if (updateAnswers.length === QnA.length) return;
+    return setStep(step + 1);
   };
 
   useEffect(() => {
