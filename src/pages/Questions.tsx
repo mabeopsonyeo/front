@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 import { styled } from 'styled-components';
 import { stepState, answerState } from '@/recoil/state';
-import { resultSelector } from '@/recoil/selector';
 
 import { MBTI } from '@/interface/MBTI';
 import { ButtonColor } from '@/interface/Color';
@@ -16,7 +15,6 @@ export const Questions = () => {
   const navigate = useNavigate();
   const [answers, setAnswers] = useRecoilState(answerState);
   const [step, setStep] = useRecoilState(stepState);
-  const result = useRecoilValue(resultSelector);
 
   const oddButtons: Array<ButtonColor> = ['hoshinoPurple', 'rubyPink'];
   const evalButtons: Array<ButtonColor> = ['aiYellow', 'aquaBlue'];

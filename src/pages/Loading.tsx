@@ -20,7 +20,7 @@ export const Loading = () => {
         navigate(`/results/${result}`);
       }, 2500);
     }
-  }, [navigate]);
+  }, [result, navigate]);
 
   return <ResultWrapper>{View}</ResultWrapper>;
 };
