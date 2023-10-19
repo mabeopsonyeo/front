@@ -33,10 +33,10 @@ export const Questions = () => {
   };
 
   useEffect(() => {
-    if (answers.length === QnA.length) {
+    if (result.length === 4) {
       window.location.href = `${process.env.PUBLIC_URL}/results/${result}`;
     }
-  }, [answers, result]);
+  }, [result]);
 
   return (
     <BlurBackground>
