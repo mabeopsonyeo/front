@@ -25,15 +25,9 @@ export const Questions = () => {
     if (answers.length === QnA.length) return;
     const updateAnswers: MBTI[] = [...answers, option.type] as MBTI[];
     setAnswers(updateAnswers);
-    if (updateAnswers.length === QnA.length) return;
+    if (updateAnswers.length === QnA.length) return navigate('/loading');
     return setStep(step + 1);
   };
-
-  useEffect(() => {
-    if (result.length === 4) {
-      navigate('/loading');
-    }
-  }, [result]);
 
   return (
     <BlurBackground>

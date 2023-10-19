@@ -15,10 +15,12 @@ export const Loading = () => {
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      navigate(`/results/${result}`);
-    }, 2500);
-  }, []);
+    if (result.length === 4) {
+      setTimeout(() => {
+        navigate(`/results/${result}`);
+      }, 2500);
+    }
+  }, [navigate]);
 
   return <ResultWrapper>{View}</ResultWrapper>;
 };
