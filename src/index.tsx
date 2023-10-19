@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { hydrateRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import { RecoilRoot, useRecoilSnapshot } from 'recoil';
 
@@ -7,7 +7,6 @@ import App from '@/App';
 import theme from '@/styles/theme';
 
 import './styles/global.css';
-import { render } from 'react-dom';
 
 function DebugObserver() {
   const snapshot = useRecoilSnapshot();
@@ -35,7 +34,7 @@ if (container.hasChildNodes()) {
     </React.Suspense>
   );
 } else {
-  render(
+  createRoot(container).render(
     <React.Suspense>
       <RecoilRoot>
         {process.env.NODE_ENV === 'development' && <DebugObserver />}
@@ -43,7 +42,6 @@ if (container.hasChildNodes()) {
           <App />
         </ThemeProvider>
       </RecoilRoot>
-    </React.Suspense>,
-    container
+    </React.Suspense>
   );
 }

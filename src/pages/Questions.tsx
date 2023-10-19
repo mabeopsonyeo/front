@@ -10,11 +10,13 @@ import { Button } from '@/components/Button';
 
 import { QnA } from '@/constant/questions';
 import { AnswerType } from '@/interface/QnA';
+import { useNavigate } from 'react-router-dom';
 
 export const Questions = () => {
   const [answers, setAnswers] = useRecoilState(answerState);
   const [step, setStep] = useRecoilState(stepState);
   const result = useRecoilValue(resultSelector);
+  const navigate = useNavigate();
 
   const oddButtons: Array<ButtonColor> = ['hoshinoPurple', 'rubyPink'];
   const evalButtons: Array<ButtonColor> = ['aiYellow', 'aquaBlue'];
@@ -29,7 +31,7 @@ export const Questions = () => {
 
   useEffect(() => {
     if (result.length === 4) {
-      window.location.href = `${process.env.PUBLIC_URL}/results/${result}`;
+      navigate('/loading');
     }
   }, [result]);
 
@@ -147,7 +149,7 @@ const ProgressBar = styled.div`
       overflow: hidden;
     }
     &::-webkit-progress-value {
-      background: rgba(131, 85, 224, 0.7);
+      background: linear-gradient(225deg, #bd8bff, #9f75e6);
     }
   }
 `;

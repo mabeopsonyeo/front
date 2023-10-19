@@ -8,6 +8,7 @@ export const DefaultLayout = (props: { children: ReactNode | undefined }) => {
   const matchMain = useMatch('/');
   const matchQuestions = useMatch('/questions');
   const matchResults = useMatch('/results/:id');
+  const matchLoading = useMatch('/loading');
 
   const step = useRecoilValue(stepState);
 
@@ -22,7 +23,7 @@ export const DefaultLayout = (props: { children: ReactNode | undefined }) => {
           ? `${process.env.PUBLIC_URL}/images/background/evenQuestionsBackgroundImage.webp`
           : `${process.env.PUBLIC_URL}/images/background/oddQuestionsBackgroundImage.webp`;
     }
-    if (matchResults) {
+    if (matchResults || matchLoading) {
       imageURL = `${process.env.PUBLIC_URL}/images/background/resultBackgroundImage.webp`;
     }
     return imageURL;
