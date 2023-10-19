@@ -47,7 +47,7 @@ export const Results = () => {
       <ResultContentWrapper>
         <img
           className="result_image"
-          src={`https://mabeopsonyeo.github.io/test/images/result/${id}.webp`}
+          src={`${process.env.PUBLIC_URL}/images/result/${id}.webp`}
           alt={id}
           onLoad={() => setIsLoading(false)}
         />
