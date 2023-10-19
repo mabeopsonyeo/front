@@ -62,8 +62,8 @@ export const Results = () => {
           <meta property="og:type" content="website" />
         </Helmet>
       )}
-      <LottieWrapper isActive={!isImageLoaded}>{View}</LottieWrapper>
-      <ResultContentWrapper isActive={isImageLoaded}>
+      <LottieWrapper $isActive={!isImageLoaded}>{View}</LottieWrapper>
+      <ResultContentWrapper $isActive={isImageLoaded}>
         <img
           className="result_image"
           src={`https://mabeopsonyeo.github.io/test/images/result/${id}.webp`}
@@ -99,10 +99,10 @@ const ResultWrapper = styled.div`
   justify-content: center;
 `;
 
-const ResultContentWrapper = styled.div<{ isActive: boolean }>`
+const ResultContentWrapper = styled.div<{ $isActive: boolean }>`
   width: 100%;
   min-height: calc((calc(var(--vh, 1vh) * 100)) - 172px);
-  display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
+  display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -157,6 +157,6 @@ const BottomSection = styled.div`
   }
 `;
 
-const LottieWrapper = styled.section<{ isActive: boolean }>`
-  display: ${({ isActive }) => (isActive ? 'inherit' : 'none')};
+const LottieWrapper = styled.section<{ $isActive: boolean }>`
+  display: ${({ $isActive }) => ($isActive ? 'inherit' : 'none')};
 `;

@@ -23,17 +23,17 @@ export const Button = (props: ButtonProps) => {
   }, [type]);
 
   return (
-    <ButtonWrapper backgroundColor={backgroundColor} hoverColor={hoverColor} onClick={onClick}>
+    <ButtonWrapper $backgroundColor={backgroundColor} $hoverColor={hoverColor} onClick={onClick}>
       {children}
     </ButtonWrapper>
   );
 };
 
-const ButtonWrapper = styled.button<{ backgroundColor: string; hoverColor: string }>`
+const ButtonWrapper = styled.button<{ $backgroundColor: string; $hoverColor: string }>`
   width: 100%;
   min-height: 74px;
   border-radius: 16px;
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   color: #fff;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
   font-size: 14px;
@@ -45,6 +45,6 @@ const ButtonWrapper = styled.button<{ backgroundColor: string; hoverColor: strin
   word-break: keep-all;
 
   &:hover {
-    background-color: ${({ hoverColor }) => hoverColor};
+    background-color: ${({ $hoverColor }) => $hoverColor};
   }
 `;
