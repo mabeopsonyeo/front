@@ -65,7 +65,7 @@ export const Results = () => {
 const ResultWrapper = styled.div`
   font-size: 0;
   display: flex;
-  height: calc((calc(var(--vh, 1vh) * 100)) - 48px);
+  min-height: calc((calc(var(--vh, 1vh) * 100)) - 48px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@ const ResultWrapper = styled.div`
 
 const ResultContentWrapper = styled.div`
   width: 100%;
-  max-height: calc((calc(var(--vh, 1vh) * 100)) - 172px);
+  min-height: calc((calc(var(--vh, 1vh) * 100)) - 172px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,8 +82,6 @@ const ResultContentWrapper = styled.div`
 
   .result_image {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
 `;
 const ShareButtonWrapper = styled.div`
@@ -93,7 +91,7 @@ const ShareButtonWrapper = styled.div`
   grid-template-rows: 48px;
   gap: 12px;
   position: relative;
-
+  margin-bottom: 30px;
   .button_wrapper {
     position: relative;
     display: flex;
