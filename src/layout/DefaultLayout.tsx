@@ -39,14 +39,14 @@ export const DefaultLayout = (props: { children: ReactNode | undefined }) => {
   }, []);
 
   return (
-    <LayoutContainer backgroundImageURL={backgroundImageURL}>
+    <LayoutContainer $backgroundImageURL={backgroundImageURL}>
       <div className="background_image" />
       <LayoutWrapper>{props.children}</LayoutWrapper>
     </LayoutContainer>
   );
 };
 
-const LayoutContainer = styled.div<{ backgroundImageURL: string }>`
+const LayoutContainer = styled.div<{ $backgroundImageURL: string }>`
   display: flex;
   justify-content: center;
   min-height: calc(var(--vh, 1vh) * 100);
@@ -62,7 +62,7 @@ const LayoutContainer = styled.div<{ backgroundImageURL: string }>`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-image: url(${({ backgroundImageURL }) => backgroundImageURL});
+    background-image: url(${({ $backgroundImageURL }) => $backgroundImageURL});
     background-attachment: fixed;
   }
 `;
