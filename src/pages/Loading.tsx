@@ -7,13 +7,13 @@ import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
 export const Loading = () => {
+  const navigate = useNavigate();
   const result = useRecoilValue(resultSelector);
   const { View } = useLottie({
     animationData: lottieAnimation,
     loop: true,
   });
 
-  const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
       navigate(`/results/${result}`);

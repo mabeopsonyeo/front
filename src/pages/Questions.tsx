@@ -13,10 +13,10 @@ import { AnswerType } from '@/interface/QnA';
 import { useNavigate } from 'react-router-dom';
 
 export const Questions = () => {
+  const navigate = useNavigate();
   const [answers, setAnswers] = useRecoilState(answerState);
   const [step, setStep] = useRecoilState(stepState);
   const result = useRecoilValue(resultSelector);
-  const navigate = useNavigate();
 
   const oddButtons: Array<ButtonColor> = ['hoshinoPurple', 'rubyPink'];
   const evalButtons: Array<ButtonColor> = ['aiYellow', 'aquaBlue'];
