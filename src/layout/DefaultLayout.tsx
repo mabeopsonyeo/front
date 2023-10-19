@@ -27,7 +27,7 @@ export const DefaultLayout = (props: { children: ReactNode | undefined }) => {
       imageURL = `${process.env.PUBLIC_URL}/images/background/resultBackgroundImage.webp`;
     }
     return imageURL;
-  }, [matchMain, matchQuestions, matchResults, step]);
+  }, [matchMain, matchQuestions, matchResults, matchLoading, step]);
 
   function setScreenSize() {
     let vh = window.innerHeight * 0.01;
