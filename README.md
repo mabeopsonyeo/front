@@ -46,5 +46,5 @@ $ npm run deploy - gh page로 배포합니다.
 |제작자|역할| 🧙 |후기|
 |------|---|---|---|
 |˖°⌖꙳✧🩵**문예지**🩵˖°⌖꙳✧˖°|프론트엔드 / 기획|[시끄러운 현장엔 출동하지 못하는 마법소녀](https://mabeopsonyeo.github.io/test/results/INTJ/)|[블로그에서 확인하기](https://velog.io/@moonelysian/%EB%88%88-%EB%96%A0%EB%B3%B4%EB%8B%88-%EB%A7%88%EB%B2%95%EC%86%8C%EB%85%80)|
-|˖°⌖꙳✧💜**김주영**💜˖°⌖꙳✧˖°|프론트엔드 / 디자인|[악당의 사연을 듣고 눈물 흘리는 마법소녀](https://mabeopsonyeo.github.io/test/results/ENFP/)|[블로그에서 확인하기](https://velog.io/@kroongft/%EB%A7%88%EB%B2%95%EC%86%8C%EB%85%80-MBTI-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%A0%9C%EC%9E%91%EA%B8%B0)|
+|˖°⌖꙳✧💜**김주영**💜˖°⌖꙳✧˖°|프론트엔드 / 기획&디자인|[악당의 사연을 듣고 눈물 흘리는 마법소녀](https://mabeopsonyeo.github.io/test/results/ENFP/)|[블로그에서 확인하기](https://velog.io/@kroongft/%EB%A7%88%EB%B2%95%EC%86%8C%EB%85%80-MBTI-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%A0%9C%EC%9E%91%EA%B8%B0)|
 
